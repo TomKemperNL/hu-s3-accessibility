@@ -1,6 +1,7 @@
 import { LitElement, css, html } from 'lit'
 import { Router } from '@lit-labs/router';
 import './dialog/dialog-page.js';
+import './accordion/accordion-page.js';
 
 /**
  * An example element.
@@ -12,6 +13,7 @@ export class AppElement extends LitElement {
   _routes = new Router(this, [
     {path: '/', render: () => html`<h1>Home</h1>`},    
     {path: '/dialog', render: () => html`<dialog-page></dialog-page>`},
+    {path: '/accordion', render: () => html`<accordion-page></accordion-page>`}
   ]);
 
   render() {
