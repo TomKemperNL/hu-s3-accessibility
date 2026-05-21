@@ -16,12 +16,14 @@ export class AccordionPage extends LitElement {
             <accordion-container activeIndex="1">
                 <accordion-item header="Section 1">
                     <p>Content for Section 1</p>
+                    <button>Een focussable Button Bovenaan</button>
                 </accordion-item>
                 <accordion-item header="Section 2">
                     <p>Content for Section 2</p>
                 </accordion-item>
                 <accordion-item header="Section 3">
                     <p>Content for Section 3</p>
+                    <button>Een focussable Button onderaan</button>
                 </accordion-item>
             </accordion-container>
         `;
