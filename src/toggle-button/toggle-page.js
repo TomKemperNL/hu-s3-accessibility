@@ -13,9 +13,11 @@ export class TogglePage extends LitElement {
             <p>Details kun je vinden op: <a href="https://www.w3.org/WAI/ARIA/apg/patterns/button/">https://www.w3.org/WAI/ARIA/apg/patterns/button/</a></p>
 
             <button>Button Before</button>
-            <label for="btn-1">Toggle Button 1</label>
+            <label for="btn-1">Some Toggle Button</label>
             <toggle-button id="btn-1"></toggle-button>
-            <button>Button After</button>
+            <label for="btn-2">Button After</label>
+            
+            <button id="btn-2">Button After</button>
         `;
     }
 }
