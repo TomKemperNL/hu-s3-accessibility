@@ -10,6 +10,13 @@ export class AccordionContainer extends LitElement {
         ::slotted(accordion-item) {
             cursor: pointer;
         }
+
+        :host{
+            display: block;
+            padding: 1em;
+            border: 1px solid white;
+            border-radius: 5px;
+        }
     `;
 
     constructor() {

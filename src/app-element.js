@@ -2,6 +2,8 @@ import { LitElement, css, html } from 'lit'
 import { Router } from '@lit-labs/router';
 import './dialog/dialog-page.js';
 import './accordion/accordion-page.js';
+import './sr-only.js';
+import './sr-announcer.js';
 
 /**
  * An example element.
@@ -11,10 +13,15 @@ import './accordion/accordion-page.js';
  */
 export class AppElement extends LitElement {
   _routes = new Router(this, [
-    {path: '/', render: () => html`<h1>Home</h1>`},    
-    {path: '/dialog', render: () => html`<dialog-page></dialog-page>`},
+    {path: '/', render: () => html`<h1>Home</h1><sr-only>Je bent op de Home pagina</sr-only>`},    
+    {path: '/dialog', render: () => html`<sr-announcer><dialog-page></dialog-page></sr-announcer>`},
     {path: '/accordion', render: () => html`<accordion-page></accordion-page>`}
   ]);
+
+  connectedCallback() {
+    super.connectedCallback();
+    
+  }
 
   render() {
     return html`

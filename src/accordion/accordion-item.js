@@ -2,6 +2,11 @@ import { LitElement, html, css } from 'lit';
 export class AccordionItem extends LitElement {
 
     static styles = css`
+        h3 {
+            display: block;
+            border-bottom: 1px solid white;
+        }
+
         .collapsed {
             display: none;
         }
