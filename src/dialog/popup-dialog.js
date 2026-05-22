@@ -35,61 +35,66 @@ export class PopupDialog extends LitElement {
         return Array.from(slottedElements).concat(Array.from(ownElements)).filter(el => !el.hasAttribute('disabled'));
     }
 
-    startTrap(target, source){
+    startTrap(target, source) {
         this.trapActive = true;
         this.returnOnClose = source;
         const focussableElements = this.findFocussableElements();
         this.firstElement = focussableElements[0];
         this.lastElement = focussableElements[focussableElements.length - 1];
-        
+
     }
 
 
-    onFocusOut(e){
+    onFocusOut(e) {
         const focussableElements = this.findFocussableElements();
         console.debug(focussableElements);
         let from = e.target;
         let to = e.relatedTarget;
         console.debug('moving from ', from, 'to', to);
-        let isMovingOutFront = 
-            from === this.firstElement && 
+        let isMovingOutFront =
+            from === this.firstElement &&
             focussableElements.indexOf(to) === -1;
 
-        let isMovingOutBack = 
+        let isMovingOutBack =
             from === this.lastElement &&
             focussableElements.indexOf(to) === -1;
 
-        if(this.trapActive){
+        if (this.trapActive) {
             console.debug('trap is active')
-            if(isMovingOutFront){
+            if (isMovingOutFront) {
                 console.debug('moving out front');
                 this.lastElement.focus();
-            } else if(isMovingOutBack){
+            } else if (isMovingOutBack) {
                 console.debug('moving out back');
                 this.firstElement.focus();
             }
         }
     }
 
-    
-    onFocusIn(e) {        
-        if(!this.trapActive){
+
+    onFocusIn(e) {
+        if (!this.trapActive) {
             console.debug('starting trap', e.target, e.relatedTarget);
-            this.startTrap(e.target, e.relatedTarget);            
+            this.startTrap(e.target, e.relatedTarget);
         }
     }
 
-    onClose(){
+    onClose() {
         this.open = false;
         this.trapActive = false;
         this.returnOnClose.focus();
     }
 
     updated(changedProperties) {
-        if(changedProperties.has('open') && !this.open){
-            this.onClose();
-        }
+        if (changedProperties.has('open')) {
+            if (this.open) {
+                const focussableElements = this.findFocussableElements();
+                focussableElements[0]?.focus();
+            } else {
+                this.onClose();
             }
+        }
+    }
 
     render() {
         console.debug('rendering dialog component');
