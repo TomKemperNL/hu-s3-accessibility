@@ -3,6 +3,7 @@ import { Router } from '@lit-labs/router';
 import './dialog/dialog-page.js';
 import './accordion/accordion-page.js';
 import './toggle-button/toggle-page.js';
+import './nested-tabindex/nested-tabs-page.js';
 
 /**
  * An example element.
@@ -15,7 +16,8 @@ export class AppElement extends LitElement {
     {path: '/', render: () => html`<h1>Home</h1>`},    
     {path: '/dialog', render: () => html`<dialog-page></dialog-page>`},
     {path: '/accordion', render: () => html`<accordion-page></accordion-page>`},
-    {path: '/toggle', render: () => html`<toggle-page></toggle-page>`}
+    {path: '/toggle', render: () => html`<toggle-page></toggle-page>`},
+    {path: '/nested-tabs', render: () => html`<nested-tabs-page></nested-tabs-page>`} 
   ]);
 
   render() {
@@ -26,6 +28,7 @@ export class AppElement extends LitElement {
           <li><a href="/dialog">Dialog</a></li>
           <li><a href="/accordion">Accordion</a></li>
           <li><a href="/toggle">Toggle</a></li>
+          <li><a href="/nested-tabs">Nested Tabs</a></li>
         </ul>
       </header>
       <main>${this._routes.outlet()}</main>
